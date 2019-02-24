@@ -1,0 +1,15 @@
+<h3>Schedule</h3>
+{% for block in section.blocks %}
+	<p><span>{{ block.settings.time }}</span> {{ block.settings.title }}</p>
+{% endfor %}
+
+{% schema %}
+	{"name":"Schedule", "class":"schedule", "blocks":[
+		{"type":"activity", "name":"Activity", "settings":[
+			{"type":"text", "id":"time", "label":"Time"},
+			{"type":"text", "id":"title", "label":"Title"}
+		]}
+	], "presets":[
+		{"name":"Schedule", "category":"Site"}
+	]}
+{% endschema %}

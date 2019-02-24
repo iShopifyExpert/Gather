@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="wrap">
+    <div class="rte confirmation">
+      <h1>Thanks!<br />You&rsquo;re registered.</h1>
+    </div> <!-- end .rte -->
+
+    <div class="event">
+      <div class="ticket">
+      	{% assign product = customer.orders[0].line_items[0].product %}
+      	<h3>{{ product.tags }}</h3>
+      	{{ product.images[0] | img_url:'612x' | img_tag:product.title }}
+      	<h4>Topic:<br /><span>{{ product.title }}</span></h4>
+      	<div class="description">{{ product.description | strip_html }}</div>
+      	<div class="when-where">
+      		<p class="heading">When</p>
+      		{{ customer.orders[0].attributes.date }}<br />
+          {{ customer.orders[0].attributes.time }}
+      	</div> <!-- .when-where -->
+      	<div class="when-where">
+      		<p class="heading">Where</p>
+      		{{ customer.orders[0].attributes.location }}<br />
+      		{{ customer.orders[0].attributes.address | newline_to_br }}
+      	</div> <!-- .when-where -->
+      </div> <!-- end .ticket -->
+    </div> <!-- end .event -->
+
+  </div> <!-- end .wrap -->
+</div> <!-- end .content -->

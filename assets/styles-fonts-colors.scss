@@ -1,0 +1,18 @@
+// Fonts
+@include web_font('PalmCanyonDrive-Regular','PalmCanyonDrive');
+@include web_font_otf('Frontage-Outline','Frontage-Outline');
+@include web_font_ttf('PermanentMarker','PermanentMarker');
+$m:'Montserrat', sans-serif;
+$p:'PalmCanyonDrive-Regular';
+$o:'Frontage-Outline';
+$pm:'PermanentMarker';
+
+// Colors
+$bg:#fcebdc;
+$blue:#22054c;
+$blue-text:#454f5a;
+$lavender:#b3b5ca;
+$taupe:#fec490;
+$orange:#bf5523;
+$orange-hover:#cc774f;
+$gray:#5d5d5d;

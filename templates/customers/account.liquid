@@ -1,0 +1,21 @@
+<div class="content">
+	<div class="rte">
+
+		<h1>{{ customer.name }}</h1>
+		{% if customer.orders.size > 0 %}
+			<table>
+				{% for order in customer.orders %}
+					{% assign product = order.line_items[0].product %}
+					<tr>
+						<td>{{ product.images[0] | img_url:'150x100', crop:'center' | img_tag:product.title }}</td>
+						<td>
+							{{ product.title }}<br />
+							{{ order.attributes.date }}
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% endif %}
+		<a href="/account/logout" class="logout">Log out</a>
+	</div> <!-- end .rte -->
+</div> <!-- end .content -->

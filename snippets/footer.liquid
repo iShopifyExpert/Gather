@@ -1,0 +1,8 @@
+<div class="footer">
+	<div class="nav">
+		{% for link in linklists.main-menu.links %}
+			{{ link.title | link_to:link.url }}
+		{% endfor %}
+	</div> <!-- end .nav -->
+	<a href="https://hardage-hardage.com" class="h-h"></a>
+</div> <!-- end .footer -->

@@ -1,0 +1,53 @@
+@media screen and (max-width:1000px) {
+  .mobile {display:block;}
+  .desktop {display:none;}
+  .wrap {width:90%; margin:0 auto;}
+
+  // Footer
+  .footer {
+    .nav {font:700 14px/1em $m;
+      a {display:block; margin:0 0 20px;}
+    }
+  }
+
+}
+
+@media screen and (max-width:800px) {
+  .announcement {font:700 20px/1em $m; letter-spacing:.1em;
+    i {font-size:25px;}
+  }
+  .logo {margin:0 auto 20px;}
+  .hero {height:400px;}
+  .welcome {text-align:left;
+    h1,h2 {letter-spacing:.1em; margin:0 0 20px;}
+    p {font:18px/30px $m; margin:0 0 40px;}
+  }
+  .event {
+    h3 {position:relative; z-index:1; line-height:.8em; letter-spacing:.1em; text-align:left; padding-left:30px;}
+    .description {text-align:left; padding:0 10% 30px;}
+    .when-where {padding:0 10%;}
+    button {width:80%;}
+  }
+  .schedule {padding:0 10% 90px;
+    p {font:23px/1em $m; color:$blue-text; text-align:left; margin:0 0 1em;
+      span {display:block;}
+    }
+  }
+  .sponsors {padding:0 10% 95px;
+    a {display:block; margin:0 auto 20px;}
+  }
+  .organizers {@include bg('graphic-skyline.png',no-repeat,bottom center);background-color:$taupe; text-align:center; padding:50px 5% 225px;
+    h3 {font-size:35px;}
+    .profiles {flex-wrap:wrap;}
+    a {margin:0 15px 25px;}
+    img {margin:0 0 10px;}
+  }
+
+
+
+
+}
+
+@media screen and (max-width:500px) {
+  .hero {height:300px;}
+}

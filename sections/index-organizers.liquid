@@ -1,0 +1,21 @@
+<i class="fa fa-star" aria-hidden="true"></i>
+<p>Your friendly</p>
+<h3>Organizers</h3>
+<div class="profiles">
+	{% for block in section.blocks %}
+		<a href="mailto:{{ block.settings.link }}" title="{{ block.settings.link }}">
+			{{ block.settings.image | img_url:'90x90', crop:'center' | img_tag:block.settings.title }}
+			{{ block.settings.title }}
+		</a>
+	{% endfor %}
+</div> <!-- end .profiles -->
+
+{% schema %}
+	{"name":"Organizers", "class":"organizers", "blocks":[
+		{"type":"organizer", "name":"Organizer", "settings":[
+			{"type":"text", "id":"title", "label":"Name"},
+			{"type":"image_picker", "id":"image", "label":"Image"},
+			{"type":"text", "id":"link", "label":"Email address"}
+		]}
+	]}
+{% endschema %}

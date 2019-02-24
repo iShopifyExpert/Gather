@@ -1,0 +1,28 @@
+<div class="content">
+	<div class="rte">
+
+		<h1>Account login</h1>
+		{% form 'customer_login' %}
+			{% if form.errors %}{% for field in form.errors %}<p>{{ field }}: {{ form.errors.messages[field] }}</p>{% endfor %}{% endif %}
+			<label for="customer[email]">Email address</label>
+			<input type="email" name="customer[email]" />
+			<label for="customer[password]">Password</label>
+			<input type="password" name="customer[password]" />
+			<button type="submit">Sign In</button>
+			<a href="javascript:void(0)" class="forgot">Forgot your password?</a>
+			<a href="/account/register">Create an account</a>
+		{% endform %}
+
+		<div class="password">
+			{% form 'recover_customer_password' %}
+				<h1>Reset password</h1>
+				<p>We will send you an email to reset your password.</p>
+				{% if form.errors %}{% for field in form.errors %}<p>{{ field }}: {{ form.errors.messages[field] }}</p>{% endfor %}{% endif %}
+				<label for="customer[email]">Email address</label>
+				<input type="email" name="email" />
+				<button type="submit">Submit</button>
+			{% endform %}
+		</div> <!-- end .password -->
+
+	</div> <!-- end .rte -->
+</div> <!-- end .content -->

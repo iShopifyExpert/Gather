@@ -1,0 +1,28 @@
+<div class="event">
+
+<div class="content">
+	{% assign product = all_products[section.settings.event] %}
+	<h3>{{ product.tags }}</h3>
+	{{ product.images[0] | img_url:'612x' | img_tag:product.title }}
+	<h4>Topic:<br /><span>{{ product.title }}</span></h4>
+	<div class="description">{{ product.description | strip_html }}</div>
+	<div class="when-where">
+		<p class="heading">When</p>
+		{{ section.settings.date_time | newline_to_br }}
+	</div> <!-- .when-where -->
+	<div class="when-where">
+		<p class="heading">Where</p>
+		{{ section.settings.location | newline_to_br }}
+	</div> <!-- .when-where -->
+	<button type="button">RSVP now</button>
+</div> <!-- end .content -->
+
+</div> <!-- end .event -->
+
+{% schema %}
+	{"name":"Event", "settings":[
+		{"type":"product", "id":"event", "label":"Event"},
+		{"type":"textarea", "id":"date_time", "label":"When"},
+		{"type":"textarea", "id":"location", "label":"Where"}
+  ]}
+{% endschema %}

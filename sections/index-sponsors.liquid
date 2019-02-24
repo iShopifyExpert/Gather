@@ -1,0 +1,16 @@
+<h3>Thank you, partners</h3>
+{% for block in section.blocks %}
+	<a href="{{ block.settings.link }}" target="_blank">{{ block.settings.image | img_url:'200x200' | img_tag:block.settings.title }}</a>
+{% endfor %}
+
+{% schema %}
+	{"name":"Sponsors", "class":"sponsors", "blocks":[
+		{"type":"sponsor", "name":"Sponsor", "settings":[
+			{"type":"text", "id":"title", "label":"Name"},
+			{"type":"image_picker", "id":"image", "label":"Image"},
+			{"type":"text", "id":"link", "label":"Link"}
+		]}
+	], "presets":[
+		{"name":"Sponsors", "category":"Site"}
+	]}
+{% endschema %}

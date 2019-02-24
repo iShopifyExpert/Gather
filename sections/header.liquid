@@ -1,0 +1,32 @@
+{% if section.settings.announcement != blank %}
+	<div class="announcement"><i class="fa fa-bullhorn" aria-hidden="true"></i>{{ section.settings.announcement }}</div>
+{% endif %}
+
+<div class="header">
+	<div class="wrap">
+		<a href="{{ shop.url }}" class="logo"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" /></a>
+		<p>Since 2015</p>
+	</div> <!-- end .wrap -->
+</div> <!-- end .header -->
+
+{% comment %}
+<form action="/search" method="get">
+	<input type="text" name="q" placeholder="Search" />
+	<button type="submit">Search</button>
+</form>
+
+<a href="/account">{% if customer %}My Account{% else %}Log in{% endif %}</a>
+{% if customer %}<a href="/account/logout">Log out</a>{% else %}<a href="/account/register">Create Account</a>{% endif %}
+
+<a href="/cart">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize:'item','items' }}</a>
+
+{% for link in linklists.main-menu.links %}
+	{{ link.title | link_to:link.url }}
+{% endfor %}
+{% endcomment %}
+
+{% schema %}
+	{"name":"Header", "settings":[
+    {"type":"textarea", "id":"announcement", "label":"Announcement text", "default":"Next meetup: Feb 25!"}
+  ]}
+{% endschema %}

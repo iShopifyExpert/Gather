@@ -1,0 +1,11 @@
+<a class="href" href="{{ product.images[0] | img_url:'1024x1024' }}" data-lightbox="{{ product.title | handle }}">
+	<img itemprop="image" class="src" src="{{ product.images[0] | img_url:'grande' }}" alt="{{ product.title | escape }}" />
+</a>
+
+{% if product.images.size > 1 %}
+	<div class="images">
+		{% for image in product.images %}
+			<a href="javascript:void(0)" data="{{ image | img_url:'1024x1024' }}">{{ image | img_url:'small' | img_tag:product.title }}</a>
+		{% endfor %}
+	</div> <!-- end .images -->
+{% endif %}

@@ -1,0 +1,122 @@
+<div class="event" id="event">
+
+<div class="content">
+	{% assign product = all_products[section.settings.event] %}
+	<h3>{{ product.tags }}</h3>
+	{{ product.images[0] | img_url:'612x' | img_tag:product.title }}
+	<h4>Topic:<br /><span>{{ product.title }}</span></h4>
+	<div class="description">{{ product.description }}</div>
+	<div class="when-where">
+		<p class="heading">When</p>
+		{{ section.settings.date_time | newline_to_br }}
+	</div> <!-- .when-where -->
+	<div class="when-where">
+		<p class="heading">Where</p>
+		{{ section.settings.location_title }}<br />
+		<a href="{{ section.settings.location_link }}">{{ section.settings.location_address | newline_to_br }}</a>
+	</div> <!-- .when-where -->
+	<form action="https://fourthmesa.com/gather/index.php" method="post">
+		<input type="hidden" name="email" value="{{ customer.email }}" />
+		{% if product.variants[0].available %}
+			<input type="hidden" name="variant" value="{{ product.variants[0].id }}" />
+		{% else %}
+			<input type="hidden" name="variant" value="{{ product.variants[1].id }}" />
+		{% endif %}
+		{% assign date_time = section.settings.date_time | newline_to_br | split:'<br />' %}
+		<input type="hidden" name="date" value="{{ date_time[0] }}" />
+		<input type="hidden" name="time" value="{{ date_time[1] | strip_newlines }}" />
+		<input type="hidden" name="location" value="{{ section.settings.location_title }}" />
+		<input type="hidden" name="address" value="{{ section.settings.location_address | newline_to_br | replace:'<br />',' ' | strip_newlines }}" />
+
+		{% if customer %}
+			{% for order in customer.orders %}
+				{% if order.line_items[0].product.variants[0].id == product.variants[0].id %}
+					{% assign registered = true %}
+				{% endif %}
+			{% endfor %}
+			{% if registered %}
+				<button type="button">You&rsquo;re registered!</button>
+			{% else %}
+				<button type="submit">{% if product.variants[0].available %}RSVP now{% else %}Join the waitlist{% endif %}</button>
+			{% endif %}
+		{% else %}
+			<button type="button" class="login">{% if product.variants[0].available %}RSVP now{% else %}Join the waitlist{% endif %}</button>
+		{% endif %}
+	</form>
+</div> <!-- end .content -->
+
+</div> <!-- end .event -->
+
+<div class="overlay">
+	<div class="modal">
+		<div class="form login-form">
+			{% form 'customer_login' %}
+				<input type="hidden" name="checkout_url" value="/#event" />
+				<p class="heading">Please sign in</p>
+				<p>Or <a href="javascript:void(0)" class="form-toggle">create an account</a> to RSVP</p>
+				<input type="email" name="customer[email]" placeholder="email address" />
+				<input type="password" name="customer[password]" placeholder="password" />
+				<button type="submit">Sign In</button>
+				<a href="javascript:void(0)" class="forgot">Forgot your password?</a>
+			{% endform %}
+			<div class="password">
+				{% form 'recover_customer_password' %}
+					<input type="hidden" name="checkout_url" value="/#event" />
+					<p class="heading">Reset password</p>
+					<p>We will send you an email to reset your password.</p>
+					<input type="email" name="email" placeholder="email address" />
+					<button type="submit">Submit</button>
+				{% endform %}
+			</div> <!-- end .password -->
+		</div> <!-- end .login-form -->
+		<div class="form register-form">
+			{% form 'create_customer' %}
+				<p class="heading">Create an account</p>
+				<p>Or <a href="javascript:void(0)" class="form-toggle">log in to your account</a> to RSVP</p>
+				<input type="hidden" name="checkout_url" value="/#event" />
+				<label for="customer[first_name]">First name</label>
+				<input type="text" value="" name="customer[first_name]" />
+				<label for="customer[last_name]">Last name</label>
+				<input type="text" value="" name="customer[last_name]" />
+				<label for="customer[email]">Email address</label>
+				<input type="email" value="" name="customer[email]" />
+				<label for="customer[password]">Password</label>
+				<input type="password" value="" name="customer[password]" />
+				<button type="submit">Create account</button>
+			{% endform %}
+		</div> <!-- end .login-form -->
+	</div> <!-- end .modal -->
+</div> <!-- end .overlay -->
+
+<script>
+	$('.login').click(function() {
+		$('.overlay').addClass('active');
+	});
+	$('.form-toggle').click(function() {
+		$('.form').toggle();
+	});
+	$('.forgot').click(function() {
+		$('.password').toggle();
+	});
+
+	$(document).keyup(function(e) {
+		if (e.keyCode == 27) {
+			var state = $('.overlay').hasClass('active');
+			if(state==true) {
+				$('.overlay').removeClass('active');
+			}
+		}
+	});
+
+</script>
+
+{% schema %}
+	{"name":"Event", "settings":[
+		{"type":"product", "id":"event", "label":"Event"},
+		{"type":"textarea", "id":"date_time", "label":"When"},
+		{"type":"header", "content":"Location"},
+		{"type":"text", "id":"location_title", "label":"Name"},
+		{"type":"textarea", "id":"location_address", "label":"Address"},
+		{"type":"text", "id":"location_link", "label":"Address link"}
+  ]}
+{% endschema %}

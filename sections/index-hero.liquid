@@ -1,0 +1,9 @@
+<div class="hero" style="background:url({{ section.settings.hero | img_url:'2000x' }}) no-repeat center; background-size:cover;"></div>
+
+{% schema %}
+	{"name":"Hero image", "settings":[
+		{"type":"image_picker", "id":"hero", "label":"Image"}
+	], "presets":[
+		{"name":"Hero image", "category":"Home page"}
+	]}
+{% endschema %}

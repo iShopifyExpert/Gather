@@ -1,0 +1,5 @@
+// Mixins
+@mixin bg($asset,$repeat,$position) {background:url('{{ "#{$asset}" | asset_url }}') $repeat $position;}
+@mixin web_font($webfont,$file) {@font-face {font-family:"#{$webfont}"; src:url('{{ "font-#{$file}.eot" | asset_url }}');  src:url('{{ "font-#{$file}.eot?#iefix" | asset_url }}') format('embedded-opentype'), url('{{ "font-#{$file}.woff2" | asset_url }}') format('woff2'), url('{{ "font-#{$file}.woff" | asset_url }}') format('woff'), url('{{ "font-#{$file}.ttf" | asset_url }}') format('truetype');}}
+@mixin web_font_otf($webfont,$file) {@font-face {font-family:"#{$webfont}"; src:url('{{ "font-#{$file}.otf" | asset_url }}') format('opentype');}}
+@mixin web_font_ttf($webfont,$file) {@font-face {font-family:"#{$webfont}"; src:url('{{ "font-#{$file}.ttf" | asset_url }}') format('truetype');}}

@@ -1,0 +1,150 @@
+@charset "UTF-8";
+@import 'styles-mixins';
+@import 'styles-reset';
+@import 'styles-fonts-colors';
+
+// Global
+.mobile {display:none;}
+*, *:after, *:before {-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+.wrap {width:1000px; margin:0 auto;}
+
+// Header
+.announcement {display:flex; align-items:center; justify-content:center; height:70px; background:$blue; font:700 26px/1em $m; color:$lavender; letter-spacing:.2em; text-transform:uppercase; text-align:center;
+  i {font-size:30px; margin-right:10px;}
+}
+.header {background:$taupe; padding:36px 0 48px;
+  .logo {display:block; width:100%; max-width:710px; height:auto; margin:0 auto 40px;}
+  p {font:700 11px/1em $m; color:$orange; letter-spacing:.8em; text-transform:uppercase; text-align:center;}
+}
+
+// Footer
+.footer {background-color:$orange; padding:40px 0 100px;
+  .nav {font:700 16px/1em $m; color:$taupe; letter-spacing:.2em; text-transform:uppercase; text-align:center;
+    a {color:$taupe; margin:0 19px;}
+  }
+  .h-h {display:block; width:257px; height:310px; @include bg('logo-footer.png',no-repeat,center); margin:80px auto 0;}
+}
+
+// RTE
+.rte {font:15px/24px $m; color:$blue-text;
+  p {margin:0 0 3em;}
+  h1 {font:700 26px/1em $m; letter-spacing:.2em; text-transform:uppercase; text-align:center; margin:0 0 3em;}
+  h2, h3, h4, h5, h6 {font:700 16px/1em $m; letter-spacing:.2em; text-transform:uppercase; margin:0 0 1em;}
+  ul li {list-style:inside disc;}
+  a {color:$blue-text; text-decoration:underline;}
+}
+
+// Index
+.hero {height:530px; background-size:contain;
+  img {display:block; max-height:530px; margin:0 auto;}
+}
+.welcome {background-color:$bg; padding:70px 0 10px; text-align:center;
+  .content {width:80%; max-width:677px; margin:0 auto;}
+  h1,h2 {font:700 16px/1.5em $m; color:$blue-text; letter-spacing:.2em; text-transform:uppercase; margin:0 0 40px;}
+  p {font:23px/39px $m; color:$blue-text; margin:0 0 60px;}
+}
+.event {background-color:$bg;
+  .content, .ticket {width:612px; max-width:100%; background:#fff; padding:0 0 75px; margin:0 auto;}
+  h3 {display:flex; align-items:center; justify-content:center; height:115px; font:700 95px/1em $m; color:$taupe; letter-spacing:.2em; text-transform:uppercase; text-align:center; padding-left:10px;}
+  img{display:block; margin:0 auto 40px;}
+  h4 {font:700 16px/1em $m; color:$blue-text; letter-spacing:.2em; text-transform:uppercase; text-align:center; margin:0 0 30px;
+    span {display:inline-block; border-bottom:3px solid $blue-text; padding:0 0 7px; margin:15px 0 0;}
+  }
+  .description {font:15px/24px $m; color:$blue-text; text-align:center; padding:0 70px 30px;
+    p {margin:0 0 1em;}
+  }
+  .when-where {font:15px/24px $m; color:$blue-text; padding:0 70px; margin:0 0 30px;
+    a {display:block; color:$blue-text; text-decoration:underline;}
+  }
+  .heading {font:700 16px/1em $m; color:$blue-text; letter-spacing:.2em; text-transform:uppercase; margin:0 0 10px;}
+  button {display:block; width:328px; max-width:100%; height:78px; background-color:$orange; font:700 16px/78px $m; color:#fff; letter-spacing:.2em; text-transform:uppercase; text-align:center; padding-left:5px; margin:60px auto 0; cursor:pointer;
+    &:hover {background-color:$orange-hover;}
+  }
+  .button {display:block; font:24px/1em $pm; color:$orange; text-align:center; margin:0 25px;
+    &:hover {color:$orange-hover;}
+  }
+}
+.index .event {padding:0 0 80px;}
+.overlay {position:fixed; top:0; bottom:0; left:0; right:0; z-index:100; display:none; align-items:center; justify-content:center; width:100%; height:100%; background:rgba(0,0,0,.7);
+  &.active {display:flex;}
+  .modal {display:flex; align-items:center; justify-content:center;
+    .form {width:400px; max-width:90%; height:auto; background:$bg; border-radius:8px; font:15px/24px $m; color:$blue-text; padding:40px;
+      &.register-form {display:none;}
+      p {margin:0 0 1em;}
+      .heading {font:700 16px/1em $m; color:$blue-text; letter-spacing:.2em; text-transform:uppercase;}
+      input {display:block; width:100%; height:48px; background:#fff; font:15px/48px $m; color:$blue-text; padding:0 15px; margin:0 0 20px;}
+      button {display:block; width:250px; height:48px; background-color:$orange; font:700 16px/48px $m; color:#fff; letter-spacing:.2em; text-transform:uppercase; text-align:center; padding-left:5px;
+        &:hover {background-color:$orange-hover;}
+      }
+      a {color:$blue-text; text-decoration:underline;}
+      .forgot {display:block; margin-top: 25px;}
+    }
+  }
+}
+.schedule {background-color:$bg; text-align:center; padding:0 5% 90px;
+  h3 {font:700 16px/1em $m; color:$blue-text; letter-spacing:.2em; text-transform:uppercase; margin:0 0 60px;}
+  p {font:23px/39px $m; color:$blue-text;
+    span {font-weight:700;}
+  }
+}
+.sponsors {background-color:$bg; text-align:center; padding:0 5% 95px;
+  h3 {font:36px/1em $p; color:$gray; margin:0 0 50px;}
+  a {display:inline-block; margin:0 12px; vertical-align:middle;}
+}
+.organizers {@include bg('graphic-skyline.png',no-repeat,bottom center);background-color:$taupe; text-align:center; padding:50px 5% 225px;
+  i {display:block; font-size:20px; color:$orange; margin:0 auto 35px;}
+  p {font:700 16px/1em $m; color:$orange; letter-spacing:.2em; text-transform:uppercase; margin:0 0 25px;}
+  h3 {font:56px/1em $o; color:$orange; text-transform:uppercase; margin:0 0 60px;}
+  .profiles {display:flex; align-items:flex-start; justify-content:center;}
+  a {display:block; font:24px/1em $pm; color:$orange; margin:0 25px;}
+  img {display:block; border-radius:50%; margin:0 0 15px;}
+}
+
+// Page
+.page, .customers {
+  .content {background-color:$bg; padding:100px 30px;
+    .rte {max-width:700px; margin:0 auto;}
+  }
+}
+// Confirmation
+.rte.confirmation {
+  h1 {font:700 35px/1.5em $m; color:$orange; letter-spacing:.1em; text-transform:uppercase; margin:0 0 50px;}
+}
+// Contact
+.page-contact {
+  .main {background:$bg;}
+  form {display:block; max-width:500px; margin:0 auto;}
+  label {display:block; margin:0 0 5px;}
+  input, textarea {display:block; width:100%; height:48px; background:#fff; font:15px/48px $m; color:$blue-text; padding:0 15px; margin:0 0 20px;}
+  textarea {height:200px; line-height:24px; padding:15px;}
+  button {display:block; width:250px; height:48px; background-color:$orange; font:700 16px/48px $m; color:#fff; letter-spacing:.2em; text-transform:uppercase; text-align:center; padding-left:5px; margin:40px 0 0;
+    &:hover {background-color:$orange-hover;}
+  }
+}
+
+// Customer
+.add-new-address, .edit-address {display:none;}
+.password {display:none; margin-top:50px;
+  h1 {margin:0 0 35px;}
+  p {margin:0 0 1em;}
+}
+.customers {
+  .main {
+    form {display:block; max-width:500px; margin:0 auto;}
+    label {display:block; margin:0 0 5px;}
+    input {display:block; width:100%; height:48px; background:#fff; font:15px/48px $m; color:$blue-text; padding:0 15px; margin:0 0 20px;}
+    button {display:block; width:250px; height:48px; background-color:$orange; font:700 16px/48px $m; color:#fff; letter-spacing:.2em; text-transform:uppercase; text-align:center; padding-left:5px; margin:40px 0 0;
+      &:hover {background-color:$orange-hover;}
+    }
+    a {display:block; color:$blue-text; text-decoration:underline;}
+    .forgot {margin-top: 25px;}
+    .logout {display:block; text-align:center; margin-top:100px;}
+    table {display:table; width:100%; max-width:500px; margin:0 auto;}
+    td {vertical-align:middle; padding:10px;
+      img {border-radius:4px;}
+    }
+  }
+}
+
+
+@import 'styles-mobile';

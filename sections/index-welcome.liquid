@@ -1,0 +1,15 @@
+<div class="content">
+	<h1>Who are these events for?</h1>
+	<p>{{ section.settings.welcome-1 }}</p>
+	<h2>How do I attend</h2>
+	<p>{{ section.settings.welcome-2 }}</p>
+</div> <!-- end .content -->
+
+{% schema %}
+	{"name":"Welcome", "class":"welcome", "settings":[
+		{"type":"textarea", "id":"welcome-1", "label":"Who are these events for?"},
+		{"type":"textarea", "id":"welcome-2", "label":"How do i attend?"}
+	], "presets":[
+		{"name":"Welcome", "category":"Home page"}
+	]}
+{% endschema %}
