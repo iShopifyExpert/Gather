@@ -1,0 +1,9 @@
+
+*.yml
+_app/.DS_Store
+assets/.DS_Store
+*.scssc
+sections/.DS_Store
+snippets/.DS_Store
+templates/.DS_Store
+.DS_Store
