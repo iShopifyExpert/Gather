@@ -1,4 +1,4 @@
-{% if section.settings.announcement != blank %}
+{% if section.settings.display-announcement %}
 	<div class="announcement"><i class="fa fa-bullhorn" aria-hidden="true"></i>{{ section.settings.announcement }}</div>
 {% endif %}
 
@@ -27,6 +27,7 @@
 
 {% schema %}
 	{"name":"Header", "settings":[
-    {"type":"textarea", "id":"announcement", "label":"Announcement text", "default":"Next meetup: Feb 25!"}
+		{"type":"checkbox", "id":"display-announcement", "label":"Display announcement?", "default":true},
+		{"type":"textarea", "id":"announcement", "label":"Announcement text", "default":"Next meetup: Feb 25!"}
   ]}
 {% endschema %}
