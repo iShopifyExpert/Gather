@@ -111,12 +111,14 @@
 </script>
 
 {% schema %}
-	{"name":"Event", "settings":[
+	{"name":"Featured event", "settings":[
 		{"type":"product", "id":"event", "label":"Event"},
 		{"type":"textarea", "id":"date_time", "label":"When"},
 		{"type":"header", "content":"Location"},
 		{"type":"text", "id":"location_title", "label":"Name"},
 		{"type":"textarea", "id":"location_address", "label":"Address"},
 		{"type":"text", "id":"location_link", "label":"Address link"}
-  ]}
+  ], "presets":[
+		{"name":"Event", "category":"Home page"}
+	]}
 {% endschema %}
